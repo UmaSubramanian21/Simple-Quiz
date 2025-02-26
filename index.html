@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Interactive Quiz</title>
+    <style>
+        body {
+            background-image: url("./images/bg1.jpg");
+            background-size: cover;
+            /* background-repeat: no-repeat; */
+            background-position: center;
+        }
+
+        #quiz_section {
+            display: flex;
+            flex-direction: column;
+            background-color: powderblue;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        #result_section {
+            display: flex;
+            flex-direction: column;
+            background-color: powderblue;
+            justify-content: center;
+            padding: 20px;
+            align-items: center;
+            border-radius: 5px;
+
+        }
+
+        @media screen and (max-width:800px) {
+            #main {
+                flex-direction: column;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div style="display: flex;
+    justify-content:space-around;
+    margin:100px;gap:10px;" id="main">
+        <!-- quiz section -->
+        <div id="quiz_section">
+            <h1>Interactive Quiz</h1>
+            <!-- qn 1 -->
+            <section>
+                <p>1. What is the capital of France?</p>
+                <!-- options -->
+                <div>
+                    <input type="radio" name="qn1" value="Paris"> Paris
+                    <input type="radio" name="qn1" value="London"> London
+                    <input type="radio" name="qn1" value="Berin"> Berin
+                </div>
+            </section>
+            <section>
+                <p>2.Which planet is known as the Red Planet?</p>
+                <!-- options -->
+                <div>
+                    <input type="radio" name="qn2" value="Mars"> Mars
+                    <input type="radio" name="qn2" value="Venus"> Venus
+                    <input type="radio" name="qn2" value="Jupiter"> Jupiter
+                </div>
+            </section>
+            <section>
+                <p>3. What is the largest mammal on Earth?</p>
+                <!-- options -->
+                <div>
+                    <input type="radio" name="qn3" value="Elephant"> Elephant
+                    <input type="radio" name="qn3" value="Blue Whale"> Blue Whale
+                    <input type="radio" name="qn3" value="Giraffe"> Giraffe
+                </div>
+                <br>
+                <div>
+                    <button id="submit">Check</button>
+                </div>
+            </section>
+        </div>
+        <!-- Answer section -->
+        <div id="result_section">
+            <h1>Your Quiz Result</h1>
+            <h2 id="result">Score </h2>
+        </div>
+    </div>
+
+</body>
+<!--  -->
+<script>
+    // declare variable for store scores
+    var score = 0
+    // coreect answers
+    var qn1_ans = "Paris"
+    var qn2_ans = "Mars"
+    var qn3_ans = "Blue Whale"
+
+    // selecting radio bbutton ( elements ) by names
+    var qn1_options = document.getElementsByName("qn1")
+    var qn2_options = document.getElementsByName("qn2")
+    var qn3_options = document.getElementsByName("qn3")
+    var submit = document.getElementById("submit")
+    var result = document.getElementById("result")
+
+    // console.log(qn1_options[0].value)
+    for (var i = 0; i < qn1_options.length; i++) {
+        // qn1 answer clicking and value getting , adding 1 point 
+        qn1_options[i].addEventListener("click", function () {
+            if (event.target.value == qn1_ans) {
+                // console.log(qn1_ans)
+                score = score + 1
+            }
+        })
+
+        // qn2 answer clicking and value getting , adding 1 point 
+        qn2_options[i].addEventListener("click", function () {
+            if (event.target.value == qn2_ans) {
+                // console.log(qn2_ans)
+                score = score + 1
+            }
+        })
+
+        // qn3 answer clicking and value getting , adding 1 point 
+        qn3_options[i].addEventListener("click", function () {
+            if (event.target.value == qn3_ans) {
+                // console.log(" qn3  ok")
+                score = score + 1
+            }
+        })
+    }
+    submit.addEventListener("click", function () {
+        console.log(score, "out of 3")
+        result.textContent = " Your Score is : " + score
+    })
+
+
+</script>
+
+</html>
